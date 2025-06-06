@@ -12,6 +12,5 @@ public class Ball : MonoBehaviour
         {
             _GameManager.UpdateBallCount();
         }
-
     }
 }

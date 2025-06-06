@@ -16,6 +16,8 @@ public class BallAreaLogic
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject PickerObject;
+    [SerializeField] private GameObject[] PickerPropeller;
+    bool HasPropeller;
     [SerializeField] private GameObject BallControlObject;
     public bool PickerMoveState;
 
@@ -60,6 +62,13 @@ public class GameManager : MonoBehaviour
 
     public void ReachedEndZone()
     {
+        if (HasPropeller)
+        {
+            PickerPropeller[0].SetActive(false);
+            PickerPropeller[1].SetActive(false);
+        }
+
+
         PickerMoveState = false;
         Invoke("StageControl", 2f);
 
@@ -98,6 +107,12 @@ public class GameManager : MonoBehaviour
             {
                 ActiveCheckPointIndex++;
                 ThrownBallCount = 0;
+                if (HasPropeller)
+                {
+                    PickerPropeller[0].SetActive(true);
+                    PickerPropeller[1].SetActive(true);
+                }
+
             }
         }
         else
@@ -105,6 +120,14 @@ public class GameManager : MonoBehaviour
             Debug.Log("LOSE");
         }
     }
+
+    public void ShowPropeller()
+    {
+        HasPropeller = true;
+        PickerPropeller[0].SetActive(true);
+        PickerPropeller[1].SetActive(true);
+    }
+
 
     /*private void OnDrawGizmos()
     {
