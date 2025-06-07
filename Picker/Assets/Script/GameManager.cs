@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject PickerObject;
     [SerializeField] private GameObject[] PickerPropeller;
+    [SerializeField] private GameObject[] BonusBalls;
     bool HasPropeller;
     [SerializeField] private GameObject BallControlObject;
     public bool PickerMoveState;
@@ -128,6 +129,10 @@ public class GameManager : MonoBehaviour
         PickerPropeller[1].SetActive(true);
     }
 
+    public void AddBonusBall(int BonusBallIndex)
+    {
+        BonusBalls[BonusBallIndex].SetActive(true);
+    }
 
     /*private void OnDrawGizmos()
     {
